@@ -12,10 +12,10 @@
   </script>
   <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asri Flora Jogja - Jual Tanaman Hias & Jasa Pembuatan Taman Yogyakarta</title>
+    <title>Syaifudin Garden Jogja - Jual Tanaman Hias & Jasa Pembuatan Taman Yogyakarta</title>
     <meta name="description" content="Jual tanaman hias sehat indoor & outdoor serta jasa desain dan pembuatan taman profesional di Sleman, Bantul, dan Kota Yogyakarta. Survei lokasi gratis.">
     <meta name="theme-color" content="#1E3A2B">
-    <meta property="og:title" content="Asri Flora Jogja - Tanaman Hias & Jasa Taman">
+    <meta property="og:title" content="Syaifudin Garden Jogja - Tanaman Hias & Jasa Taman">
     <meta property="og:description" content="Tanaman hias pilihan dan jasa pembuatan taman profesional di Yogyakarta.">
     <meta property="og:image" content="images/hero-garden.webp">
     <meta property="og:locale" content="id_ID">
@@ -69,12 +69,12 @@
     <header class="fixed top-0 inset-x-0 z-50 transition-all duration-300" :class="scrolled ? 'bg-cream/90 backdrop-blur-md border-b border-ink/10' : 'bg-transparent'">
         <div class="max-w-7xl mx-auto px-5 sm:px-8">
             <div class="flex justify-between items-center h-20">
-                <a href="#beranda" class="flex items-center gap-3" aria-label="Asri Flora Yogyakarta - Beranda">
+                <a href="#beranda" class="flex items-center gap-3" aria-label="Syaifudin Garden Yogyakarta - Beranda">
                     <span class="w-10 h-10 rounded-full bg-forest text-cream flex items-center justify-center">
                         <i class="fa-solid fa-seedling" aria-hidden="true"></i>
                     </span>
                     <span class="leading-none">
-                        <span class="block font-serif text-xl font-medium text-forest">Asri Flora</span>
+                        <span class="block font-serif text-xl font-medium text-forest">Syaifudin Garden</span>
                         <span class="block text-[10px] font-semibold tracking-[0.25em] uppercase text-clay mt-1">Yogyakarta</span>
                     </span>
                 </a>
@@ -88,7 +88,7 @@
                     <a href="#tentang" class="hover:text-forest transition-colors">Kontak</a>
                 </nav>
 
-                <a :href="wa('Halo Asri Flora Jogja, saya ingin konsultasi.')" target="_blank" rel="noopener" class="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-forest hover:bg-forest-light text-cream text-sm font-semibold transition-colors">
+                <a :href="wa('Halo Syaifudin Garden Jogja, saya ingin konsultasi.')" target="_blank" rel="noopener" class="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-forest hover:bg-forest-light text-cream text-sm font-semibold transition-colors">
                     <i class="fa-brands fa-whatsapp text-base" aria-hidden="true"></i> Konsultasi Gratis
                 </a>
 
@@ -104,7 +104,7 @@
                     <a :href="link.href" @click="mobileMenu = false" class="py-3.5 font-serif text-lg text-forest" x-text="link.label"></a>
                 </template>
             </nav>
-            <a :href="wa('Halo Asri Flora Jogja, saya ingin konsultasi.')" target="_blank" rel="noopener" class="mt-4 w-full flex items-center justify-center gap-2 px-4 py-3.5 rounded-full bg-forest text-cream font-semibold text-sm">
+            <a :href="wa('Halo Syaifudin Garden Jogja, saya ingin konsultasi.')" target="_blank" rel="noopener" class="mt-4 w-full flex items-center justify-center gap-2 px-4 py-3.5 rounded-full bg-forest text-cream font-semibold text-sm">
                 <i class="fa-brands fa-whatsapp text-lg" aria-hidden="true"></i> WhatsApp Konsultasi
             </a>
         </div>
@@ -158,7 +158,7 @@
                     <div class="lg:col-span-5 reveal">
                         <div class="relative">
                             <div class="relative rounded-t-[999px] rounded-b-[2rem] overflow-hidden aspect-[4/5] bg-cream-dark">
-                                <img src="images/hero-garden.webp" alt="Taman tropis asri dengan jalan setapak batu dan kolam kecil karya Asri Flora" class="w-full h-full object-cover" fetchpriority="high">
+                                <img src="images/hero-garden.webp" alt="Taman tropis asri dengan jalan setapak batu dan kolam kecil karya Syaifudin Garden" class="w-full h-full object-cover" fetchpriority="high">
                             </div>
                             <div class="absolute -left-4 sm:-left-10 bottom-10 bg-cream rounded-2xl p-4 pr-6 shadow-xl shadow-forest/10 flex items-center gap-3 border border-ink/5">
                                 <span class="w-11 h-11 rounded-full bg-clay/10 text-clay flex items-center justify-center shrink-0">
@@ -220,7 +220,7 @@
                                 <img :src="p.img" :alt="p.name" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                                 <span class="absolute top-4 left-4 bg-cream/95 text-forest text-xs font-semibold px-3 py-1.5 rounded-full" x-text="p.label"></span>
                                 <span x-show="p.badge" class="absolute top-4 right-4 bg-clay text-cream text-xs font-semibold px-3 py-1.5 rounded-full" x-text="p.badge"></span>
-                                <a :href="wa('Halo Asri Flora, saya mau pesan ' + p.name + ' (' + rupiah(p.price) + ').')" target="_blank" rel="noopener"
+                                <a :href="wa('Halo Syaifudin Garden, saya mau pesan ' + p.name + ' (' + rupiah(p.price) + ').')" target="_blank" rel="noopener"
                                     class="absolute bottom-4 inset-x-4 flex items-center justify-center gap-2 py-3.5 rounded-full bg-forest text-cream text-sm font-semibold opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 focus:opacity-100 focus:translate-y-0 transition-all duration-300 max-lg:opacity-100 max-lg:translate-y-0">
                                     <i class="fa-brands fa-whatsapp text-base" aria-hidden="true"></i> Pesan via WhatsApp
                                 </a>
@@ -270,7 +270,7 @@
                                     </li>
                                 </template>
                             </ul>
-                            <a :href="wa('Halo Asri Flora, saya tertarik dengan layanan ' + s.title + '.')" target="_blank" rel="noopener"
+                            <a :href="wa('Halo Syaifudin Garden, saya tertarik dengan layanan ' + s.title + '.')" target="_blank" rel="noopener"
                                 class="mt-8 group inline-flex items-center gap-2 text-sm font-semibold text-cream border-b border-cream/30 hover:border-clay pb-1 self-start transition-colors">
                                 Konsultasi layanan ini
                                 <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1" aria-hidden="true"></i>
@@ -347,7 +347,7 @@
                                 <li class="flex gap-3"><i class="fa-solid fa-check text-clay mt-1 text-xs" aria-hidden="true"></i> Jasa pengerjaan & garansi</li>
                             </ul>
                         </div>
-                        <a :href="wa('Halo Asri Flora, saya ingin klaim survei gratis. Estimasi: ' + currentConcept.label + ', luas ' + calcArea + ' m2 (' + rupiah(total) + ').')" target="_blank" rel="noopener"
+                        <a :href="wa('Halo Syaifudin Garden, saya ingin klaim survei gratis. Estimasi: ' + currentConcept.label + ', luas ' + calcArea + ' m2 (' + rupiah(total) + ').')" target="_blank" rel="noopener"
                             class="relative mt-10 inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-clay hover:bg-clay-dark text-cream font-semibold text-sm transition-colors">
                             <i class="fa-brands fa-whatsapp text-lg" aria-hidden="true"></i> Klaim Survei Lokasi Gratis
                         </a>
@@ -400,7 +400,7 @@
             <div class="max-w-7xl mx-auto px-5 sm:px-8">
                 <div class="text-center max-w-2xl mx-auto reveal">
                     <p class="text-xs font-semibold uppercase tracking-[0.2em] text-clay">Testimoni</p>
-                    <h2 id="testimoni-title" class="mt-4 font-serif text-4xl sm:text-5xl text-forest leading-tight text-balance">Kata mereka tentang Asri Flora</h2>
+                    <h2 id="testimoni-title" class="mt-4 font-serif text-4xl sm:text-5xl text-forest leading-tight text-balance">Kata mereka tentang Syaifudin Garden</h2>
                 </div>
                 <div class="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">
                     <template x-for="t in testimonials" :key="t.name">
@@ -429,7 +429,7 @@
                     <p class="text-xs font-semibold uppercase tracking-[0.2em] text-clay">FAQ</p>
                     <h2 class="mt-4 font-serif text-4xl sm:text-5xl text-forest leading-tight text-balance">Pertanyaan yang sering diajukan</h2>
                     <p class="mt-4 text-ink/65 leading-relaxed">Tidak menemukan jawaban? Tim kami siap membantu lewat WhatsApp.</p>
-                    <a :href="wa('Halo Asri Flora, saya punya pertanyaan.')" target="_blank" rel="noopener" class="mt-6 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-forest hover:bg-forest-light text-cream text-sm font-semibold transition-colors">
+                    <a :href="wa('Halo Syaifudin Garden, saya punya pertanyaan.')" target="_blank" rel="noopener" class="mt-6 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-forest hover:bg-forest-light text-cream text-sm font-semibold transition-colors">
                         <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Tanya Langsung
                     </a>
                 </div>
@@ -481,7 +481,7 @@
                                 <dt class="w-11 h-11 rounded-full bg-forest/5 text-forest flex items-center justify-center shrink-0"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i><span class="sr-only">WhatsApp</span></dt>
                                 <dd>
                                     <span class="block font-semibold text-forest">WhatsApp</span>
-                                    <a href="https://wa.me/6285786098459" target="_blank" rel="noopener" class="block text-sm text-ink/65 mt-1 hover:text-clay">+62 857-8609-8459</a>
+                                    <a href="https://wa.me/6285875472551" target="_blank" rel="noopener" class="block text-sm text-ink/65 mt-1 hover:text-clay">+62 858-7547-2551</a>
                                 </dd>
                             </div>
                         </dl>
@@ -490,7 +490,7 @@
                     <div class="lg:col-span-7 reveal">
                         <div class="rounded-[2rem] overflow-hidden border border-ink/10 bg-cream-dark h-[420px]">
                             <iframe
-                                title="Peta lokasi Asri Flora di Sleman, Yogyakarta"
+                                title="Peta lokasi Syaifudin Garden di Sleman, Yogyakarta"
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63245.97078310329!2d110.33982512167967!3d-7.750000000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a599bd35a0721%3A0x3030bfb47d31270!2sSleman%2C%20Sleman%20Regency%2C%20Special%20Region%20of%20Yogyakarta!5e0!3m2!1sen!2sid!4v1680000000000!5m2!1sen!2sid"
                                 class="w-full h-full border-0 grayscale-[30%]"
                                 allowfullscreen=""
@@ -511,7 +511,7 @@
                 <div class="relative max-w-2xl">
                     <h2 class="font-serif text-4xl sm:text-5xl leading-tight text-balance">Siap mempercantik rumah Anda?</h2>
                     <p class="mt-5 text-cream/85 leading-relaxed">Pesan tanaman hias pilihan atau jadwalkan survei taman gratis ke rumah Anda hari ini.</p>
-                    <a :href="wa('Halo Asri Flora Jogja, saya ingin konsultasi dan jadwalkan survei.')" target="_blank" rel="noopener"
+                    <a :href="wa('Halo Syaifudin Garden Jogja, saya ingin konsultasi dan jadwalkan survei.')" target="_blank" rel="noopener"
                         class="mt-8 inline-flex items-center gap-3 px-8 py-4 rounded-full bg-cream hover:bg-white text-forest font-semibold transition-colors">
                         <i class="fa-brands fa-whatsapp text-xl" aria-hidden="true"></i> Hubungi via WhatsApp
                     </a>
@@ -527,7 +527,7 @@
                 <div class="md:col-span-5">
                     <div class="flex items-center gap-3">
                         <span class="w-10 h-10 rounded-full bg-cream text-forest flex items-center justify-center"><i class="fa-solid fa-seedling" aria-hidden="true"></i></span>
-                        <span class="font-serif text-2xl text-cream">Asri Flora</span>
+                        <span class="font-serif text-2xl text-cream">Syaifudin Garden</span>
                     </div>
                     <p class="mt-5 text-sm max-w-sm leading-relaxed">Pusat tanaman hias berkualitas dan jasa pembuatan taman profesional di Sleman, Bantul, dan Kota Yogyakarta.</p>
                 </div>
@@ -547,16 +547,16 @@
                     <div class="mt-5 flex gap-3">
                         <a href="https://instagram.com" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-cream/15 flex items-center justify-center text-cream hover:bg-clay hover:border-clay transition-colors" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
                         <a href="https://facebook.com" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-cream/15 flex items-center justify-center text-cream hover:bg-clay hover:border-clay transition-colors" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
-                        <a href="https://wa.me/6285786098459" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-cream/15 flex items-center justify-center text-cream hover:bg-clay hover:border-clay transition-colors" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+                        <a href="https://wa.me/6285875472551" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-cream/15 flex items-center justify-center text-cream hover:bg-clay hover:border-clay transition-colors" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
-            <p class="pt-8 text-xs text-cream/40">&copy; 2026 Asri Flora Yogyakarta. Hak cipta dilindungi.</p>
+            <p class="pt-8 text-xs text-cream/40">&copy; 2026 Syaifudin Garden Yogyakarta. Hak cipta dilindungi.</p>
         </div>
     </footer>
 
     <!-- Floating WhatsApp -->
-    <a :href="wa('Halo Asri Flora Jogja, saya ingin bertanya.')" target="_blank" rel="noopener" x-cloak x-show="scrolled" x-transition
+    <a :href="wa('Halo Syaifudin Garden Jogja, saya ingin bertanya.')" target="_blank" rel="noopener" x-cloak x-show="scrolled" x-transition
         class="fixed bottom-5 right-5 z-40 w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center text-2xl shadow-lg shadow-black/20 hover:scale-105 transition-transform" aria-label="Chat WhatsApp">
         <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
     </a>
@@ -568,7 +568,7 @@
     <script>
         function app() {
             return {
-                phone: '6285786098459',
+                phone: '6285875472551',
                 mobileMenu: false,
                 scrolled: false,
                 activeTab: 'semua',
