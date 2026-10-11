@@ -1,513 +1,664 @@
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W8RTGGNY5R"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-W8RTGGNY5R');
+  </script>
+  <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Asri Flora Jogja - Jual Tanaman Hias & Jasa Pembuatan Taman Yogyakarta</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-    </style>
-</head>
-<body class="bg-stone-50 text-stone-800 antialiased" x-data="{ mobileMenu: false, activeTab: 'semua', calcType: 'minimalis', calcArea: 10, calcTotal: 0 }">
+    <meta name="description" content="Jual tanaman hias sehat indoor & outdoor serta jasa desain dan pembuatan taman profesional di Sleman, Bantul, dan Kota Yogyakarta. Survei lokasi gratis.">
+    <meta name="theme-color" content="#1E3A2B">
+    <meta property="og:title" content="Asri Flora Jogja - Tanaman Hias & Jasa Taman">
+    <meta property="og:description" content="Tanaman hias pilihan dan jasa pembuatan taman profesional di Yogyakarta.">
+    <meta property="og:image" content="images/hero-garden.webp">
+    <meta property="og:locale" content="id_ID">
 
-    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-stone-200 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        forest: { DEFAULT: '#1E3A2B', light: '#2F5A43', dark: '#142A1F' },
+                        cream: { DEFAULT: '#F5F0E6', dark: '#EAE2D2' },
+                        clay: { DEFAULT: '#B85C38', dark: '#9C4A2B' },
+                        ink: '#1B1F1C',
+                        sage: '#A9BFA4',
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['Fraunces', 'serif'],
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        [x-cloak] { display: none !important; }
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
+        .reveal.is-visible { opacity: 1; transform: none; }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { opacity: 1; transform: none; transition: none; }
+            html { scroll-behavior: auto; }
+        }
+        input[type=range] { -webkit-appearance: none; appearance: none; background: transparent; }
+        input[type=range]::-webkit-slider-runnable-track { height: 6px; border-radius: 999px; background: rgba(255,255,255,.18); }
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 22px; width: 22px; border-radius: 999px; background: #F5F0E6; margin-top: -8px; border: 4px solid #B85C38; cursor: pointer; }
+        input[type=range]::-moz-range-track { height: 6px; border-radius: 999px; background: rgba(255,255,255,.18); }
+        input[type=range]::-moz-range-thumb { height: 14px; width: 14px; border-radius: 999px; background: #F5F0E6; border: 4px solid #B85C38; cursor: pointer; }
+    </style>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="bg-cream text-ink font-sans antialiased selection:bg-clay selection:text-cream" x-data="app()">
+
+    <a href="#beranda" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:bg-forest focus:text-cream focus:px-4 focus:py-2 focus:rounded-full">Lewati ke konten</a>
+
+    <!-- Header -->
+    <header class="fixed top-0 inset-x-0 z-50 transition-all duration-300" :class="scrolled ? 'bg-cream/90 backdrop-blur-md border-b border-ink/10' : 'bg-transparent'">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8">
             <div class="flex justify-between items-center h-20">
-                <!-- Brand Logo -->
-                <a href="#" class="flex items-center space-x-3">
-                    <div class="w-10 h-10 rounded-xl bg-emerald-600 flex items-center justify-center text-white shadow-md shadow-emerald-600/20">
-                        <i class="fa-solid fa-seedling text-xl"></i>
-                    </div>
-                    <div>
-                        <span class="text-xl font-bold tracking-tight text-stone-900 block leading-tight">Asri Flora</span>
-                        <span class="text-xs font-semibold text-emerald-600 tracking-widest uppercase">Yogyakarta</span>
-                    </div>
+                <a href="#beranda" class="flex items-center gap-3" aria-label="Asri Flora Yogyakarta - Beranda">
+                    <span class="w-10 h-10 rounded-full bg-forest text-cream flex items-center justify-center">
+                        <i class="fa-solid fa-seedling" aria-hidden="true"></i>
+                    </span>
+                    <span class="leading-none">
+                        <span class="block font-serif text-xl font-medium text-forest">Asri Flora</span>
+                        <span class="block text-[10px] font-semibold tracking-[0.25em] uppercase text-clay mt-1">Yogyakarta</span>
+                    </span>
                 </a>
 
-                <!-- Desktop Navigation -->
-                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-stone-600">
-                    <a href="#beranda" class="hover:text-emerald-600 transition">Beranda</a>
-                    <a href="#katalog" class="hover:text-emerald-600 transition">Tanaman Hias</a>
-                    <a href="#layanan" class="hover:text-emerald-600 transition">Jasa Taman</a>
-                    <a href="#kalkulator" class="hover:text-emerald-600 transition">Simulasi Biaya</a>
-                    <a href="#portofolio" class="hover:text-emerald-600 transition">Portofolio</a>
-                    <a href="#tentang" class="hover:text-emerald-600 transition">Lokasi & Kontak</a>
+                <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-ink/70" aria-label="Navigasi utama">
+                    <a href="#katalog" class="hover:text-forest transition-colors">Tanaman Hias</a>
+                    <a href="#layanan" class="hover:text-forest transition-colors">Jasa Taman</a>
+                    <a href="#kalkulator" class="hover:text-forest transition-colors">Simulasi Biaya</a>
+                    <a href="#portofolio" class="hover:text-forest transition-colors">Portofolio</a>
+                    <a href="#faq" class="hover:text-forest transition-colors">FAQ</a>
+                    <a href="#tentang" class="hover:text-forest transition-colors">Kontak</a>
                 </nav>
 
-                <!-- CTA Button -->
-                <div class="hidden md:flex items-center space-x-4">
-                    <a href="https://wa.me/6285786098459?text=Halo%20Asri%20Flora%20Jogja,%20saya%20ingin%20konsultasi..." target="_blank" class="inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm shadow-lg shadow-emerald-600/20 transition transform hover:-translate-y-0.5">
-                        <i class="fa-brands fa-whatsapp mr-2 text-lg"></i> Hubungi Kami
-                    </a>
-                </div>
+                <a :href="wa('Halo Asri Flora Jogja, saya ingin konsultasi.')" target="_blank" rel="noopener" class="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-forest hover:bg-forest-light text-cream text-sm font-semibold transition-colors">
+                    <i class="fa-brands fa-whatsapp text-base" aria-hidden="true"></i> Konsultasi Gratis
+                </a>
 
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden flex items-center">
-                    <button @click="mobileMenu = !mobileMenu" class="text-stone-700 focus:outline-none p-2" aria-label="Menu Mobile">
-                        <i :class="mobileMenu ? 'fa-solid fa-xmark text-2xl' : 'fa-solid fa-bars text-2xl'"></i>
-                    </button>
-                </div>
+                <button @click="mobileMenu = !mobileMenu" class="lg:hidden w-11 h-11 rounded-full flex items-center justify-center text-forest hover:bg-forest/5" :aria-expanded="mobileMenu" aria-controls="mobile-menu" aria-label="Buka menu">
+                    <i :class="mobileMenu ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'" class="text-xl" aria-hidden="true"></i>
+                </button>
             </div>
         </div>
 
-        <!-- Mobile Menu Dropdown -->
-        <div x-show="mobileMenu" x-transition class="md:hidden bg-white border-b border-stone-200 px-4 pt-2 pb-6 space-y-3">
-            <a href="#beranda" @click="mobileMenu = false" class="block py-2 text-stone-700 font-medium hover:text-emerald-600">Beranda</a>
-            <a href="#katalog" @click="mobileMenu = false" class="block py-2 text-stone-700 font-medium hover:text-emerald-600">Tanaman Hias</a>
-            <a href="#layanan" @click="mobileMenu = false" class="block py-2 text-stone-700 font-medium hover:text-emerald-600">Jasa Taman</a>
-            <a href="#kalkulator" @click="mobileMenu = false" class="block py-2 text-stone-700 font-medium hover:text-emerald-600">Simulasi Biaya</a>
-            <a href="#portofolio" @click="mobileMenu = false" class="block py-2 text-stone-700 font-medium hover:text-emerald-600">Portofolio</a>
-            <a href="#tentang" @click="mobileMenu = false" class="block py-2 text-stone-700 font-medium hover:text-emerald-600">Lokasi & Kontak</a>
-            <div class="pt-2">
-                <a href="https://wa.me/6285786098459" target="_blank" class="w-full flex items-center justify-center px-4 py-3 rounded-xl bg-emerald-600 text-white font-semibold text-sm shadow-md">
-                    <i class="fa-brands fa-whatsapp mr-2 text-lg"></i> WhatsApp Konsultasi
-                </a>
-            </div>
+        <div id="mobile-menu" x-cloak x-show="mobileMenu" x-transition.opacity @click.outside="mobileMenu = false" class="lg:hidden bg-cream border-b border-ink/10 px-5 pb-6">
+            <nav class="flex flex-col divide-y divide-ink/10" aria-label="Navigasi mobile">
+                <template x-for="link in navLinks" :key="link.href">
+                    <a :href="link.href" @click="mobileMenu = false" class="py-3.5 font-serif text-lg text-forest" x-text="link.label"></a>
+                </template>
+            </nav>
+            <a :href="wa('Halo Asri Flora Jogja, saya ingin konsultasi.')" target="_blank" rel="noopener" class="mt-4 w-full flex items-center justify-center gap-2 px-4 py-3.5 rounded-full bg-forest text-cream font-semibold text-sm">
+                <i class="fa-brands fa-whatsapp text-lg" aria-hidden="true"></i> WhatsApp Konsultasi
+            </a>
         </div>
     </header>
 
-    <section id="beranda" class="relative overflow-hidden pt-12 pb-20 md:py-28 bg-gradient-to-b from-emerald-50/70 to-stone-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                    <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-wider">
-                        <i class="fa-solid fa-location-dot text-emerald-600"></i>
-                        <span>Pusat & Showroom di Yogyakarta</span>
-                    </div>
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-stone-900 tracking-tight leading-tight">
-                        Wujudkan <span class="text-emerald-600">Taman Impian</span> & Koleksi Tanaman Asri
-                    </h1>
-                    <p class="text-lg text-stone-600 max-w-2xl mx-auto lg:mx-0">
-                        Penyedia tanaman hias segar pilihan serta layanan desain & pembuatan taman profesional untuk wilayah Sleman, Bantul, dan Kota Yogyakarta.
-                    </p>
-                    <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-2">
-                        <a href="#katalog" class="px-8 py-4 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-center shadow-xl shadow-emerald-600/25 transition transform hover:-translate-y-0.5">
-                            Lihat Tanaman Hias
-                        </a>
-                        <a href="#layanan" class="px-8 py-4 rounded-2xl bg-white hover:bg-stone-100 text-stone-800 font-bold border border-stone-300 text-center transition shadow-sm">
-                            Jasa Pembuatan Taman
-                        </a>
-                    </div>
-                    <div class="pt-6 grid grid-cols-3 gap-4 border-t border-stone-200 max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
-                        <div>
-                            <p class="text-2xl font-extrabold text-stone-900">300+</p>
-                            <p class="text-xs text-stone-500 font-medium">Spesies Tanaman</p>
-                        </div>
-                        <div>
-                            <p class="text-2xl font-extrabold text-stone-900">180+</p>
-                            <p class="text-xs text-stone-500 font-medium">Proyek Taman</p>
-                        </div>
-                        <div>
-                            <p class="text-2xl font-extrabold text-stone-900">Survei Free</p>
-                            <p class="text-xs text-stone-500 font-medium">Area Yogyakarta</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="lg:col-span-5 relative">
-                    <div class="relative mx-auto max-w-md lg:max-w-none">
-                        <div class="absolute -inset-1 rounded-3xl bg-gradient-to-tr from-emerald-600 to-teal-400 opacity-30 blur-xl"></div>
-                        <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white">
-                            <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=800&q=80" alt="Taman Hias Asri Jogja" class="w-full h-[420px] sm:h-[480px] object-cover">
-                            <div class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-stone-100 flex items-center space-x-3">
-                                <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-lg shrink-0">
-                                    <i class="fa-solid fa-truck-fast"></i>
-                                </div>
-                                <div>
-                                    <p class="text-sm font-bold text-stone-900">Siap Kirim & Garansi Tanaman</p>
-                                    <p class="text-xs text-stone-500">Antar langsung ke alamat area DIY & sekitarnya</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="katalog" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-12 space-y-4">
-                <span class="text-xs font-bold uppercase tracking-widest text-emerald-600 px-3.5 py-1 rounded-full bg-emerald-50">Katalog Produk</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight">Koleksi Tanaman Hias Terfavorit</h2>
-                <p class="text-stone-600">Tanaman sehat, segar, dan siap pajang dari kebun budidaya kami di Yogyakarta.</p>
-                
-                <!-- Category Filter -->
-                <div class="flex flex-wrap justify-center gap-2 pt-4">
-                    <button @click="activeTab = 'semua'" :class="activeTab === 'semua' ? 'bg-emerald-600 text-white shadow-md' : 'bg-stone-100 text-stone-700 hover:bg-stone-200'" class="px-5 py-2.5 rounded-xl text-sm font-semibold transition">Semua Tanaman</button>
-                    <button @click="activeTab = 'indoor'" :class="activeTab === 'indoor' ? 'bg-emerald-600 text-white shadow-md' : 'bg-stone-100 text-stone-700 hover:bg-stone-200'" class="px-5 py-2.5 rounded-xl text-sm font-semibold transition">Indoor</button>
-                    <button @click="activeTab = 'outdoor'" :class="activeTab === 'outdoor' ? 'bg-emerald-600 text-white shadow-md' : 'bg-stone-100 text-stone-700 hover:bg-stone-200'" class="px-5 py-2.5 rounded-xl text-sm font-semibold transition">Outdoor</button>
-                    <button @click="activeTab = 'kaktus'" :class="activeTab === 'kaktus' ? 'bg-emerald-600 text-white shadow-md' : 'bg-stone-100 text-stone-700 hover:bg-stone-200'" class="px-5 py-2.5 rounded-xl text-sm font-semibold transition">Kaktus & Sukulen</button>
-                </div>
-            </div>
-
-            <!-- Product Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Item 1 -->
-                <div class="group bg-stone-50 rounded-3xl p-4 border border-stone-200 hover:shadow-xl transition flex flex-col justify-between" x-show="activeTab === 'semua' || activeTab === 'indoor'">
-                    <div>
-                        <div class="relative overflow-hidden rounded-2xl aspect-square mb-4 bg-stone-200">
-                            <img src="https://images.unsplash.com/photo-1614594975525-e45190c55d0b?auto=format&fit=crop&w=500&q=80" alt="Monstera Deliciosa" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                            <span class="absolute top-3 left-3 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-lg shadow-sm">Indoor</span>
-                        </div>
-                        <h3 class="font-bold text-lg text-stone-900 group-hover:text-emerald-600 transition">Monstera Deliciosa</h3>
-                        <p class="text-xs text-stone-500 mt-1">Daun berlubang estetis, sangat cocok memepercantik interior ruangan.</p>
-                    </div>
-                    <div class="mt-6 flex items-center justify-between">
-                        <div>
-                            <span class="text-xs text-stone-400 block">Harga</span>
-                            <span class="text-lg font-bold text-emerald-600">Rp 120.000</span>
-                        </div>
-                        <a href="https://wa.me/6285786098459?text=Halo%20Asri%20Flora,%20saya%20mau%20pesan%20Monstera%20Deliciosa" target="_blank" class="px-4 py-2.5 rounded-xl bg-stone-900 hover:bg-emerald-600 text-white text-xs font-semibold transition flex items-center space-x-1.5">
-                            <i class="fa-brands fa-whatsapp"></i>
-                            <span>Beli</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Item 2 -->
-                <div class="group bg-stone-50 rounded-3xl p-4 border border-stone-200 hover:shadow-xl transition flex flex-col justify-between" x-show="activeTab === 'semua' || activeTab === 'indoor'">
-                    <div>
-                        <div class="relative overflow-hidden rounded-2xl aspect-square mb-4 bg-stone-200">
-                            <img src="https://images.unsplash.com/photo-1599598425947-038202517833?auto=format&fit=crop&w=500&q=80" alt="Aglaonema Red" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                            <span class="absolute top-3 left-3 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-lg shadow-sm">Indoor</span>
-                        </div>
-                        <h3 class="font-bold text-lg text-stone-900 group-hover:text-emerald-600 transition">Aglaonema Anjamani</h3>
-                        <p class="text-xs text-stone-500 mt-1">Daun corak merah menyala khas, tahan cuaca dan mudah dirawat.</p>
-                    </div>
-                    <div class="mt-6 flex items-center justify-between">
-                        <div>
-                            <span class="text-xs text-stone-400 block">Harga</span>
-                            <span class="text-lg font-bold text-emerald-600">Rp 85.000</span>
-                        </div>
-                        <a href="https://wa.me/6285786098459?text=Halo%20Asri%20Flora,%20saya%20mau%20pesan%20Aglaonema" target="_blank" class="px-4 py-2.5 rounded-xl bg-stone-900 hover:bg-emerald-600 text-white text-xs font-semibold transition flex items-center space-x-1.5">
-                            <i class="fa-brands fa-whatsapp"></i>
-                            <span>Beli</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Item 3 -->
-                <div class="group bg-stone-50 rounded-3xl p-4 border border-stone-200 hover:shadow-xl transition flex flex-col justify-between" x-show="activeTab === 'semua' || activeTab === 'outdoor'">
-                    <div>
-                        <div class="relative overflow-hidden rounded-2xl aspect-square mb-4 bg-stone-200">
-                            <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=500&q=80" alt="Palem Kuning" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                            <span class="absolute top-3 left-3 bg-teal-600 text-white text-xs font-bold px-3 py-1 rounded-lg shadow-sm">Outdoor</span>
-                        </div>
-                        <h3 class="font-bold text-lg text-stone-900 group-hover:text-emerald-600 transition">Palem Kuning Asri</h3>
-                        <p class="text-xs text-stone-500 mt-1">Tanaman peneduh pekarangan rumah, membuat suasana sejuk.</p>
-                    </div>
-                    <div class="mt-6 flex items-center justify-between">
-                        <div>
-                            <span class="text-xs text-stone-400 block">Harga</span>
-                            <span class="text-lg font-bold text-emerald-600">Rp 150.000</span>
-                        </div>
-                        <a href="https://wa.me/6285786098459?text=Halo%20Asri%20Flora,%20saya%20mau%20pesan%20Palem%20Kuning" target="_blank" class="px-4 py-2.5 rounded-xl bg-stone-900 hover:bg-emerald-600 text-white text-xs font-semibold transition flex items-center space-x-1.5">
-                            <i class="fa-brands fa-whatsapp"></i>
-                            <span>Beli</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Item 4 -->
-                <div class="group bg-stone-50 rounded-3xl p-4 border border-stone-200 hover:shadow-xl transition flex flex-col justify-between" x-show="activeTab === 'semua' || activeTab === 'kaktus'">
-                    <div>
-                        <div class="relative overflow-hidden rounded-2xl aspect-square mb-4 bg-stone-200">
-                            <img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=500&q=80" alt="Kaktus Sukulen Mini" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                            <span class="absolute top-3 left-3 bg-amber-600 text-white text-xs font-bold px-3 py-1 rounded-lg shadow-sm">Kaktus</span>
-                        </div>
-                        <h3 class="font-bold text-lg text-stone-900 group-hover:text-emerald-600 transition">Paket Kaktus Mini (3 pot)</h3>
-                        <p class="text-xs text-stone-500 mt-1">Set kaktus hias beserta pot terakota mini cantik untuk meja kerja.</p>
-                    </div>
-                    <div class="mt-6 flex items-center justify-between">
-                        <div>
-                            <span class="text-xs text-stone-400 block">Harga</span>
-                            <span class="text-lg font-bold text-emerald-600">Rp 65.000</span>
-                        </div>
-                        <a href="https://wa.me/6285786098459?text=Halo%20Asri%20Flora,%20saya%20mau%20pesan%20Paket%20Kaktus" target="_blank" class="px-4 py-2.5 rounded-xl bg-stone-900 hover:bg-emerald-600 text-white text-xs font-semibold transition flex items-center space-x-1.5">
-                            <i class="fa-brands fa-whatsapp"></i>
-                            <span>Beli</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="layanan" class="py-20 bg-stone-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
-                <span class="text-xs font-bold uppercase tracking-widest text-emerald-600 px-3.5 py-1 rounded-full bg-emerald-100">Layanan Professional</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight">Jasa Pembuatan Taman di Jogja</h2>
-                <p class="text-stone-600">Kami berpengalaman mengerjakan berbagai tipe taman untuk rumah tinggal, villa, kantor, hingga cafe di wilayah DI Yogyakarta.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Service 1 -->
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-stone-200/80 hover:shadow-md transition">
-                    <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl font-bold mb-6">
-                        <i class="fa-solid fa-tree"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-stone-900 mb-3">Taman Minimalis Modern</h3>
-                    <p class="text-stone-600 text-sm leading-relaxed mb-6">
-                        Desain hemat lahan yang rapi, bersih, dan modern. Sangat cocok untuk tipe rumah perumahan di perkotaan Jogja.
-                    </p>
-                    <ul class="space-y-2 text-xs text-stone-600 mb-8">
-                        <li class="flex items-center"><i class="fa-solid fa-check text-emerald-600 mr-2"></i> Free Konsultasi & Layout</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-emerald-600 mr-2"></i> Rumput Sintetis / Rumput Gajah Mini</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-emerald-600 mr-2"></i> Tanaman Penataan Estetik</li>
-                    </ul>
-                    <a href="https://wa.me/6285786098459?text=Halo%20Asri%20Flora,%20saya%20tertarik%20dengan%20Taman%20Minimalis" target="_blank" class="w-full block text-center py-3 rounded-xl bg-stone-900 hover:bg-emerald-600 text-white font-semibold text-sm transition">
-                        Konsultasi Taman
-                    </a>
-                </div>
-
-                <!-- Service 2 -->
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-stone-200/80 hover:shadow-md transition">
-                    <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl font-bold mb-6">
-                        <i class="fa-solid fa-water"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-stone-900 mb-3">Taman Tropis & Kolam Koi</h3>
-                    <p class="text-stone-600 text-sm leading-relaxed mb-6">
-                        Nuansa alam asri dengan kombinasi tebing batu alam, suara gemericik air terjun buatan, serta kolam ikan hias.
-                    </p>
-                    <ul class="space-y-2 text-xs text-stone-600 mb-8">
-                        <li class="flex items-center"><i class="fa-solid fa-check text-emerald-600 mr-2"></i> Kolam Ikan Filterisasi Modern</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-emerald-600 mr-2"></i> Tanaman Eksotis Tropis</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-emerald-600 mr-2"></i> Garansi Pengerjaan</li>
-                    </ul>
-                    <a href="https://wa.me/6285786098459?text=Halo%20Asri%20Flora,%20saya%20tertarik%20dengan%20Taman%20Tropis" target="_blank" class="w-full block text-center py-3 rounded-xl bg-stone-900 hover:bg-emerald-600 text-white font-semibold text-sm transition">
-                        Konsultasi Taman
-                    </a>
-                </div>
-
-                <!-- Service 3 -->
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-stone-200/80 hover:shadow-md transition">
-                    <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl font-bold mb-6">
-                        <i class="fa-solid fa-spa"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-stone-900 mb-3">Vertical Garden & Perawatan</h3>
-                    <p class="text-stone-600 text-sm leading-relaxed mb-6">
-                        Solusi taman tegak pada dinding untuk lahan terbatas serta jasa pemangkasan dan pemupukan taman berkala.
-                    </p>
-                    <ul class="space-y-2 text-xs text-stone-600 mb-8">
-                        <li class="flex items-center"><i class="fa-solid fa-check text-emerald-600 mr-2"></i> Efisiensi Lahan Sempit</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-emerald-600 mr-2"></i> Sistem Irigasi Otomatis</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-emerald-600 mr-2"></i> Maintenance Rutin Bulanan</li>
-                    </ul>
-                    <a href="https://wa.me/6285786098459?text=Halo%20Asri%20Flora,%20saya%20tertarik%20dengan%20Vertical%20Garden" target="_blank" class="w-full block text-center py-3 rounded-xl bg-stone-900 hover:bg-emerald-600 text-white font-semibold text-sm transition">
-                        Konsultasi Taman
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="kalkulator" class="py-20 bg-white">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-gradient-to-br from-stone-900 to-stone-800 rounded-3xl p-8 sm:p-12 text-white shadow-2xl relative overflow-hidden">
-                <div class="absolute -right-20 -top-20 w-80 h-80 bg-emerald-600/20 rounded-full blur-3xl"></div>
-                
-                <div class="relative z-10 text-center mb-10">
-                    <span class="text-xs font-bold uppercase tracking-widest text-emerald-400 bg-emerald-950/80 px-3.5 py-1 rounded-full">Simulasi Interaktif</span>
-                    <h2 class="text-3xl font-extrabold mt-3">Hitung Estimasi Biaya Taman Anda</h2>
-                    <p class="text-stone-300 text-sm mt-2">Dapatkan perkiraan biaya pengerjaan taman sebelum mengajukan survei lokasi.</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10 bg-white/10 p-6 sm:p-8 rounded-2xl backdrop-blur-md border border-white/10">
-                    <!-- Input Form -->
-                    <div class="space-y-5">
-                        <div>
-                            <label class="block text-xs font-semibold uppercase text-stone-300 mb-2">Pilih Konsep Taman</label>
-                            <select x-model="calcType" class="w-full bg-stone-800 border border-stone-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 text-white">
-                                <option value="minimalis">Taman Minimalis (Rp 250.000 / m²)</option>
-                                <option value="tropis">Taman Tropis (Rp 350.000 / m²)</option>
-                                <option value="kolam">Taman + Kolam Minimalis (Rp 600.000 / m²)</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <div class="flex justify-between text-xs font-semibold uppercase text-stone-300 mb-2">
-                                <span>Luas Area Taman</span>
-                                <span class="text-emerald-400 font-bold" x-text="calcArea + ' m²'"></span>
-                            </div>
-                            <input type="range" min="5" max="100" step="1" x-model="calcArea" class="w-full accent-emerald-500 bg-stone-700 h-2 rounded-lg cursor-pointer">
-                            <div class="flex justify-between text-[10px] text-stone-400 mt-1">
-                                <span>5 m²</span>
-                                <span>50 m²</span>
-                                <span>100 m²</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Estimation Result -->
-                    <div class="flex flex-col justify-between p-6 bg-emerald-900/40 border border-emerald-500/30 rounded-2xl text-center md:text-left">
-                        <div>
-                            <span class="text-xs font-medium text-emerald-300 uppercase tracking-wider block mb-1">Perkiraan Biaya Total</span>
-                            <div class="text-3xl sm:text-4xl font-extrabold text-emerald-400">
-                                <span x-text="'Rp ' + (calcArea * (calcType === 'minimalis' ? 250000 : (calcType === 'tropis' ? 350000 : 600000))).toLocaleString('id-ID')"></span>
-                            </div>
-                            <p class="text-[11px] text-stone-300 mt-2">
-                                *Sudah termasuk rumput, tanah pasang, tanaman hias, batu koral, dan pengerjaan.
-                            </p>
-                        </div>
-                        <div class="mt-6">
-                            <a :href="'https://wa.me/6285786098459?text=Halo%20Asri%20Flora,%20saya%20ingin%20konsultasi%20taman%20dengan%20estimasi%20luas%20' + calcArea + '%20m2%20konsep%20' + calcType" target="_blank" class="w-full inline-flex items-center justify-center px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-stone-950 font-bold text-sm transition shadow-lg">
-                                <i class="fa-brands fa-whatsapp mr-2 text-lg"></i> KLAIM SURVEI LOKASI GRATIS
+    <main>
+        <!-- Hero -->
+        <section id="beranda" class="relative pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-5 sm:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                    <div class="lg:col-span-7 reveal">
+                        <p class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-clay">
+                            <span class="w-8 h-px bg-clay" aria-hidden="true"></span>
+                            Nursery & Lanskap sejak 2014
+                        </p>
+                        <h1 class="mt-6 font-serif text-5xl sm:text-6xl lg:text-7xl font-normal text-forest leading-[1.02] tracking-tight text-balance">
+                            Hadirkan alam ke <em class="italic text-clay">setiap sudut</em> rumah Anda.
+                        </h1>
+                        <p class="mt-6 text-lg text-ink/70 max-w-xl leading-relaxed text-pretty">
+                            Tanaman hias segar dari kebun kami sendiri, serta jasa desain & pembuatan taman profesional untuk Sleman, Bantul, dan Kota Yogyakarta.
+                        </p>
+                        <div class="mt-9 flex flex-col sm:flex-row gap-3">
+                            <a href="#katalog" class="group inline-flex items-center justify-center gap-3 px-7 py-4 rounded-full bg-forest hover:bg-forest-light text-cream font-semibold transition-colors">
+                                Belanja Tanaman
+                                <i class="fa-solid fa-arrow-right text-sm transition-transform group-hover:translate-x-1" aria-hidden="true"></i>
+                            </a>
+                            <a href="#kalkulator" class="inline-flex items-center justify-center gap-3 px-7 py-4 rounded-full border border-forest/25 hover:border-forest text-forest font-semibold transition-colors">
+                                Hitung Biaya Taman
                             </a>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section id="portofolio" class="py-20 bg-stone-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
-                <span class="text-xs font-bold uppercase tracking-widest text-emerald-600 px-3.5 py-1 rounded-full bg-emerald-200/60">Galeri Proyek</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight">Hasil Pengerjaan Taman di Jogja</h2>
-                <p class="text-stone-600">Dokumentasi nyata hasil penataan taman terbaik yang dikerjakan oleh tim Asri Flora Jogja.</p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Portfolio 1 -->
-                <div class="relative group rounded-3xl overflow-hidden aspect-video shadow-md">
-                    <img src="https://images.unsplash.com/photo-1558904541-efa8c196b27d?auto=format&fit=crop&w=600&q=80" alt="Taman Minimalis Sleman" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-stone-950/20 to-transparent opacity-90 transition flex flex-col justify-end p-6">
-                        <span class="text-emerald-400 text-xs font-bold uppercase">Rumah Tinggal</span>
-                        <h4 class="text-white font-bold text-lg">Taman Minimalis Jakal KM 10, Sleman</h4>
-                    </div>
-                </div>
-
-                <!-- Portfolio 2 -->
-                <div class="relative group rounded-3xl overflow-hidden aspect-video shadow-md">
-                    <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=600&q=80" alt="Taman Kafe Jogja" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-stone-950/20 to-transparent opacity-90 transition flex flex-col justify-end p-6">
-                        <span class="text-emerald-400 text-xs font-bold uppercase">Komersial / Kafe</span>
-                        <h4 class="text-white font-bold text-lg">Area Asri Coffee Shop, Prawirotaman</h4>
-                    </div>
-                </div>
-
-                <!-- Portfolio 3 -->
-                <div class="relative group rounded-3xl overflow-hidden aspect-video shadow-md">
-                    <img src="https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&w=600&q=80" alt="Taman Tropis Bantul" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-stone-950/20 to-transparent opacity-90 transition flex flex-col justify-end p-6">
-                        <span class="text-emerald-400 text-xs font-bold uppercase">Taman Tropis & Kolam</span>
-                        <h4 class="text-white font-bold text-lg">Villa Asri, Kasihan Bantul</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="tentang" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div class="lg:col-span-6 space-y-6">
-                    <span class="text-xs font-bold uppercase tracking-widest text-emerald-600 px-3.5 py-1 rounded-full bg-emerald-50">Lokasi Showroom</span>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight">Kunjungi Kantor & Kebun Kebun Kami di Jogja</h2>
-                    <p class="text-stone-600 leading-relaxed">
-                        Anda dapat berkunjung langsung ke kebun pameran kami untuk memilih tanaman hias secara langsung atau berkonsultasi mengenai rencana proyek taman Anda dengan tim arsitek lanskap kami.
-                    </p>
-                    
-                    <div class="space-y-4 pt-2">
-                        <div class="flex items-start space-x-4 p-4 rounded-2xl bg-stone-50 border border-stone-200">
-                            <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 mt-1">
-                                <i class="fa-solid fa-location-dot text-lg"></i>
+                        <dl class="mt-14 grid grid-cols-3 gap-6 max-w-lg border-t border-ink/10 pt-8">
+                            <div>
+                                <dt class="sr-only">Jumlah spesies</dt>
+                                <dd class="font-serif text-4xl text-forest">300<span class="text-clay">+</span></dd>
+                                <dd class="text-xs text-ink/60 mt-1">Spesies tanaman</dd>
                             </div>
                             <div>
-                                <h4 class="font-bold text-stone-900 text-sm">Alamat Kantor & Nursery</h4>
-                                <p class="text-xs text-stone-600 mt-1">Jl. Kaliurang KM 7.5, Kayen, Condongcatur, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55283</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start space-x-4 p-4 rounded-2xl bg-stone-50 border border-stone-200">
-                            <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 mt-1">
-                                <i class="fa-solid fa-clock text-lg"></i>
+                                <dt class="sr-only">Proyek selesai</dt>
+                                <dd class="font-serif text-4xl text-forest">180<span class="text-clay">+</span></dd>
+                                <dd class="text-xs text-ink/60 mt-1">Proyek taman</dd>
                             </div>
                             <div>
-                                <h4 class="font-bold text-stone-900 text-sm">Jam Operasional</h4>
-                                <p class="text-xs text-stone-600 mt-1">Senin - Minggu: 07.30 - 17.00 WIB (Buka Setiap Hari)</p>
+                                <dt class="sr-only">Rating pelanggan</dt>
+                                <dd class="font-serif text-4xl text-forest">4.9<span class="text-clay text-2xl">/5</span></dd>
+                                <dd class="text-xs text-ink/60 mt-1">Ulasan Google</dd>
+                            </div>
+                        </dl>
+                    </div>
+
+                    <div class="lg:col-span-5 reveal">
+                        <div class="relative">
+                            <div class="relative rounded-t-[999px] rounded-b-[2rem] overflow-hidden aspect-[4/5] bg-cream-dark">
+                                <img src="images/hero-garden.webp" alt="Taman tropis asri dengan jalan setapak batu dan kolam kecil karya Asri Flora" class="w-full h-full object-cover" fetchpriority="high">
+                            </div>
+                            <div class="absolute -left-4 sm:-left-10 bottom-10 bg-cream rounded-2xl p-4 pr-6 shadow-xl shadow-forest/10 flex items-center gap-3 border border-ink/5">
+                                <span class="w-11 h-11 rounded-full bg-clay/10 text-clay flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-truck-fast" aria-hidden="true"></i>
+                                </span>
+                                <span>
+                                    <span class="block text-sm font-semibold text-forest">Antar & garansi tanaman</span>
+                                    <span class="block text-xs text-ink/60">Seluruh area DIY</span>
+                                </span>
+                            </div>
+                            <div class="absolute -right-2 sm:-right-6 top-10 w-24 h-24 rounded-full bg-clay text-cream flex flex-col items-center justify-center text-center rotate-12 shadow-lg">
+                                <span class="text-[10px] uppercase tracking-widest">Survei</span>
+                                <span class="font-serif text-2xl leading-none">Gratis</span>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <!-- Google Maps Embed Representation -->
-                <div class="lg:col-span-6">
-                    <div class="rounded-3xl overflow-hidden shadow-xl border-4 border-stone-100 bg-stone-200 h-[380px] relative">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63245.97078310329!2d110.33982512167967!3d-7.750000000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a599bd35a0721%3A0x3030bfb47d31270!2sSleman%2C%20Sleman%20Regency%2C%20Special%20Region%20of%20Yogyakarta!5e0!3m2!1sen!2sid!4v1680000000000!5m2!1sen!2sid" 
-                            class="w-full h-full border-0" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
+        <!-- Marquee strip -->
+        <div class="bg-forest text-cream/90 py-4 overflow-hidden" aria-hidden="true">
+            <div class="flex gap-12 whitespace-nowrap animate-[marquee_35s_linear_infinite] w-max font-serif text-xl italic">
+                <template x-for="i in 2">
+                    <div class="flex gap-12">
+                        <span>Taman Minimalis</span><span class="text-clay not-italic">&#10045;</span>
+                        <span>Taman Tropis</span><span class="text-clay not-italic">&#10045;</span>
+                        <span>Kolam Koi</span><span class="text-clay not-italic">&#10045;</span>
+                        <span>Vertical Garden</span><span class="text-clay not-italic">&#10045;</span>
+                        <span>Plant Styling</span><span class="text-clay not-italic">&#10045;</span>
+                        <span>Perawatan Rutin</span><span class="text-clay not-italic">&#10045;</span>
+                    </div>
+                </template>
+            </div>
+        </div>
+
+        <!-- Katalog -->
+        <section id="katalog" class="py-20 md:py-28 scroll-mt-16">
+            <div class="max-w-7xl mx-auto px-5 sm:px-8">
+                <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-12 reveal">
+                    <div class="max-w-xl">
+                        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-clay">Katalog Tanaman</p>
+                        <h2 class="mt-4 font-serif text-4xl sm:text-5xl text-forest leading-tight text-balance">Koleksi favorit dari kebun kami</h2>
+                        <p class="mt-4 text-ink/70 leading-relaxed">Sehat, segar, dan siap pajang. Setiap tanaman dirawat langsung di nursery kami di Sleman.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2" role="tablist" aria-label="Filter kategori tanaman">
+                        <template x-for="tab in tabs" :key="tab.id">
+                            <button type="button" role="tab" @click="activeTab = tab.id" :aria-selected="activeTab === tab.id"
+                                :class="activeTab === tab.id ? 'bg-forest text-cream border-forest' : 'bg-transparent text-forest border-forest/20 hover:border-forest'"
+                                class="px-5 py-2.5 rounded-full border text-sm font-semibold transition-colors" x-text="tab.label"></button>
+                        </template>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <section class="py-16 bg-emerald-600 text-white relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-6">
-            <h2 class="text-3xl sm:text-4xl font-extrabold">Siap Mempercantik Rumah Anda di Yogyakarta?</h2>
-            <p class="text-emerald-100 max-w-2xl mx-auto text-sm sm:text-base">
-                Hubungi kami sekarang via WhatsApp untuk memesan tanaman hias pilihan atau menjadwalkan survei taman gratis ke rumah Anda!
-            </p>
-            <div>
-                <a href="https://wa.me/6285786098459?text=Halo%20Asri%20Flora%20Jogja,%20saya%20ingin%20konsultasi%20dan%20survei..." target="_blank" class="inline-flex items-center justify-center px-8 py-4 rounded-2xl bg-white hover:bg-stone-100 text-emerald-800 font-bold shadow-xl transition transform hover:-translate-y-0.5">
-                    <i class="fa-brands fa-whatsapp text-2xl mr-3 text-emerald-600"></i> Hubungi via WhatsApp
-                </a>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
+                    <template x-for="p in filteredProducts" :key="p.name">
+                        <article class="group flex flex-col" x-transition.opacity>
+                            <div class="relative overflow-hidden rounded-[1.75rem] aspect-[4/5] bg-cream-dark">
+                                <img :src="p.img" :alt="p.name" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                                <span class="absolute top-4 left-4 bg-cream/95 text-forest text-xs font-semibold px-3 py-1.5 rounded-full" x-text="p.label"></span>
+                                <span x-show="p.badge" class="absolute top-4 right-4 bg-clay text-cream text-xs font-semibold px-3 py-1.5 rounded-full" x-text="p.badge"></span>
+                                <a :href="wa('Halo Asri Flora, saya mau pesan ' + p.name + ' (' + rupiah(p.price) + ').')" target="_blank" rel="noopener"
+                                    class="absolute bottom-4 inset-x-4 flex items-center justify-center gap-2 py-3.5 rounded-full bg-forest text-cream text-sm font-semibold opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 focus:opacity-100 focus:translate-y-0 transition-all duration-300 max-lg:opacity-100 max-lg:translate-y-0">
+                                    <i class="fa-brands fa-whatsapp text-base" aria-hidden="true"></i> Pesan via WhatsApp
+                                </a>
+                            </div>
+                            <div class="mt-5 flex items-start justify-between gap-4">
+                                <div>
+                                    <h3 class="font-serif text-2xl text-forest" x-text="p.name"></h3>
+                                    <p class="text-sm text-ink/60 mt-1.5 leading-relaxed" x-text="p.desc"></p>
+                                </div>
+                                <p class="font-semibold text-clay whitespace-nowrap pt-1.5" x-text="rupiah(p.price)"></p>
+                            </div>
+                        </article>
+                    </template>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <footer class="bg-stone-900 text-stone-400 py-12 border-t border-stone-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-                <div class="space-y-4 md:col-span-2">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-8 h-8 rounded-lg bg-emerald-600 flex items-center justify-center text-white font-bold">
-                            <i class="fa-solid fa-seedling"></i>
-                        </div>
-                        <span class="text-lg font-bold text-white">Asri Flora Yogyakarta</span>
+        <!-- Layanan -->
+        <section id="layanan" class="py-20 md:py-28 bg-forest text-cream relative overflow-hidden scroll-mt-16">
+            <div class="max-w-7xl mx-auto px-5 sm:px-8 relative">
+                <div class="grid lg:grid-cols-12 gap-10 mb-16 reveal">
+                    <div class="lg:col-span-6">
+                        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-sage">Jasa Pembuatan Taman</p>
+                        <h2 class="mt-4 font-serif text-4xl sm:text-5xl leading-tight text-balance">Dirancang oleh arsitek lanskap, dikerjakan tim sendiri.</h2>
                     </div>
-                    <p class="text-sm text-stone-400 max-w-sm">
-                        Pusat tanaman hias berkualitas dan jasa pembuat taman profesional area Sleman, Bantul, dan Kota Yogyakarta.
+                    <p class="lg:col-span-5 lg:col-start-8 self-end text-cream/70 leading-relaxed">
+                        Dari halaman rumah perumahan hingga villa, kafe, dan kantor di DI Yogyakarta, setiap proyek kami tangani dari konsep hingga perawatan.
                     </p>
                 </div>
-                <div>
-                    <h4 class="text-white font-bold text-sm mb-4 uppercase tracking-wider">Navigasi</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#beranda" class="hover:text-emerald-400 transition">Beranda</a></li>
-                        <li><a href="#katalog" class="hover:text-emerald-400 transition">Katalog Tanaman</a></li>
-                        <li><a href="#layanan" class="hover:text-emerald-400 transition">Jasa Pembuatan Taman</a></li>
-                        <li><a href="#kalkulator" class="hover:text-emerald-400 transition">Hitung Estimasi Biaya</a></li>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-cream/10 rounded-[2rem] overflow-hidden border border-cream/10">
+                    <template x-for="(s, idx) in services" :key="s.title">
+                        <article class="bg-forest p-8 lg:p-10 flex flex-col reveal">
+                            <div class="flex items-center justify-between">
+                                <span class="w-14 h-14 rounded-full bg-cream/10 text-sage flex items-center justify-center text-xl">
+                                    <i :class="s.icon" aria-hidden="true"></i>
+                                </span>
+                                <span class="font-serif text-cream/30 text-lg" x-text="'0' + (idx + 1)"></span>
+                            </div>
+                            <h3 class="mt-8 font-serif text-2xl" x-text="s.title"></h3>
+                            <p class="mt-3 text-sm text-cream/70 leading-relaxed" x-text="s.desc"></p>
+                            <ul class="mt-6 space-y-3 text-sm text-cream/85 flex-1">
+                                <template x-for="f in s.features">
+                                    <li class="flex items-start gap-3">
+                                        <i class="fa-solid fa-check text-clay mt-1 text-xs" aria-hidden="true"></i>
+                                        <span x-text="f"></span>
+                                    </li>
+                                </template>
+                            </ul>
+                            <a :href="wa('Halo Asri Flora, saya tertarik dengan layanan ' + s.title + '.')" target="_blank" rel="noopener"
+                                class="mt-8 group inline-flex items-center gap-2 text-sm font-semibold text-cream border-b border-cream/30 hover:border-clay pb-1 self-start transition-colors">
+                                Konsultasi layanan ini
+                                <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1" aria-hidden="true"></i>
+                            </a>
+                        </article>
+                    </template>
+                </div>
+
+                <!-- Proses -->
+                <div class="mt-20 reveal">
+                    <h3 class="font-serif text-3xl text-center">Cara kami bekerja</h3>
+                    <ol class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <template x-for="(step, i) in steps" :key="step.title">
+                            <li class="relative">
+                                <span class="flex items-center gap-4">
+                                    <span class="w-10 h-10 rounded-full border border-clay text-clay flex items-center justify-center font-serif shrink-0" x-text="i + 1"></span>
+                                    <span class="h-px flex-1 bg-cream/15 hidden lg:block" x-show="i < steps.length - 1"></span>
+                                </span>
+                                <h4 class="mt-5 font-semibold" x-text="step.title"></h4>
+                                <p class="mt-2 text-sm text-cream/65 leading-relaxed" x-text="step.desc"></p>
+                            </li>
+                        </template>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kalkulator -->
+        <section id="kalkulator" class="py-20 md:py-28 scroll-mt-16">
+            <div class="max-w-6xl mx-auto px-5 sm:px-8">
+                <div class="grid lg:grid-cols-5 gap-0 rounded-[2rem] overflow-hidden border border-ink/10 bg-cream-dark/50 reveal">
+                    <div class="lg:col-span-3 p-8 sm:p-12">
+                        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-clay">Simulasi Biaya</p>
+                        <h2 class="mt-4 font-serif text-4xl text-forest leading-tight text-balance">Hitung estimasi biaya taman Anda</h2>
+                        <p class="mt-3 text-ink/65 text-sm leading-relaxed">Perkiraan awal sebelum survei lokasi. Harga final menyesuaikan kondisi lahan.</p>
+
+                        <fieldset class="mt-10">
+                            <legend class="text-xs font-semibold uppercase tracking-wider text-ink/60 mb-3">Konsep taman</legend>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                <template x-for="c in concepts" :key="c.id">
+                                    <label class="cursor-pointer rounded-2xl border p-4 transition-colors has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-clay"
+                                        :class="calcType === c.id ? 'border-forest bg-forest text-cream' : 'border-ink/15 bg-cream hover:border-forest/50 text-forest'">
+                                        <input type="radio" name="concept" class="sr-only" :value="c.id" x-model="calcType">
+                                        <i :class="c.icon" class="text-lg" aria-hidden="true"></i>
+                                        <span class="block mt-3 font-semibold text-sm" x-text="c.label"></span>
+                                        <span class="block text-xs mt-1 opacity-70" x-text="rupiah(c.price) + ' / m²'"></span>
+                                    </label>
+                                </template>
+                            </div>
+                        </fieldset>
+
+                        <div class="mt-10">
+                            <div class="flex justify-between items-baseline mb-4">
+                                <label for="area" class="text-xs font-semibold uppercase tracking-wider text-ink/60">Luas area</label>
+                                <span class="font-serif text-2xl text-forest"><span x-text="calcArea"></span> m²</span>
+                            </div>
+                            <input id="area" type="range" min="5" max="100" step="1" x-model.number="calcArea" class="w-full [&::-webkit-slider-runnable-track]:!bg-forest/15 [&::-moz-range-track]:!bg-forest/15">
+                            <div class="flex justify-between text-xs text-ink/50 mt-2">
+                                <span>5 m²</span><span>50 m²</span><span>100 m²</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-2 bg-forest text-cream p-8 sm:p-12 flex flex-col justify-between relative overflow-hidden">
+                        <div class="absolute -right-16 -bottom-16 w-64 h-64 rounded-full border border-cream/10" aria-hidden="true"></div>
+                        <div class="absolute -right-4 -bottom-4 w-40 h-40 rounded-full border border-cream/10" aria-hidden="true"></div>
+                        <div class="relative" aria-live="polite">
+                            <p class="text-xs uppercase tracking-[0.2em] text-sage">Perkiraan biaya total</p>
+                            <p class="mt-4 font-serif text-4xl sm:text-5xl leading-none whitespace-nowrap tabular-nums" x-text="rupiah(total)"></p>
+                            <p class="mt-3 text-sm text-cream/60"><span x-text="calcArea"></span> m² &middot; <span x-text="currentConcept.label"></span></p>
+                            <ul class="mt-8 space-y-2.5 text-sm text-cream/80">
+                                <li class="flex gap-3"><i class="fa-solid fa-check text-clay mt-1 text-xs" aria-hidden="true"></i> Rumput & tanah urug</li>
+                                <li class="flex gap-3"><i class="fa-solid fa-check text-clay mt-1 text-xs" aria-hidden="true"></i> Tanaman hias & batu koral</li>
+                                <li class="flex gap-3"><i class="fa-solid fa-check text-clay mt-1 text-xs" aria-hidden="true"></i> Jasa pengerjaan & garansi</li>
+                            </ul>
+                        </div>
+                        <a :href="wa('Halo Asri Flora, saya ingin klaim survei gratis. Estimasi: ' + currentConcept.label + ', luas ' + calcArea + ' m2 (' + rupiah(total) + ').')" target="_blank" rel="noopener"
+                            class="relative mt-10 inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-clay hover:bg-clay-dark text-cream font-semibold text-sm transition-colors">
+                            <i class="fa-brands fa-whatsapp text-lg" aria-hidden="true"></i> Klaim Survei Lokasi Gratis
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portofolio -->
+        <section id="portofolio" class="py-20 md:py-28 bg-cream-dark/60 scroll-mt-16">
+            <div class="max-w-7xl mx-auto px-5 sm:px-8">
+                <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 reveal">
+                    <div class="max-w-xl">
+                        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-clay">Portofolio</p>
+                        <h2 class="mt-4 font-serif text-4xl sm:text-5xl text-forest leading-tight text-balance">Hasil karya kami di Jogja</h2>
+                    </div>
+                    <a href="https://instagram.com" target="_blank" rel="noopener" class="group inline-flex items-center gap-2 text-sm font-semibold text-forest border-b border-forest/30 hover:border-clay pb-1 self-start md:self-auto">
+                        Lihat lebih banyak di Instagram <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1" aria-hidden="true"></i>
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
+                    <figure class="md:col-span-7 md:row-span-2 relative group rounded-[1.75rem] overflow-hidden min-h-[320px] md:min-h-[560px] reveal">
+                        <img src="images/porto-kolam.webp" alt="Taman tropis dengan kolam koi dan air terjun batu alam di villa Kasihan, Bantul" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <figcaption class="absolute inset-0 bg-gradient-to-t from-forest-dark/85 via-forest-dark/10 to-transparent flex flex-col justify-end p-7">
+                            <span class="text-sage text-xs font-semibold uppercase tracking-widest">Taman Tropis & Kolam</span>
+                            <span class="mt-2 font-serif text-cream text-2xl sm:text-3xl">Villa Asri, Kasihan Bantul</span>
+                        </figcaption>
+                    </figure>
+                    <figure class="md:col-span-5 relative group rounded-[1.75rem] overflow-hidden min-h-[270px] reveal">
+                        <img src="images/porto-minimalis.webp" alt="Taman minimalis rumah tinggal di Jalan Kaliurang KM 10, Sleman" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <figcaption class="absolute inset-0 bg-gradient-to-t from-forest-dark/85 via-forest-dark/10 to-transparent flex flex-col justify-end p-6">
+                            <span class="text-sage text-xs font-semibold uppercase tracking-widest">Rumah Tinggal</span>
+                            <span class="mt-2 font-serif text-cream text-xl">Taman Minimalis Jakal KM 10, Sleman</span>
+                        </figcaption>
+                    </figure>
+                    <figure class="md:col-span-5 relative group rounded-[1.75rem] overflow-hidden min-h-[270px] reveal">
+                        <img src="images/porto-kafe.webp" alt="Area taman kafe dengan vertical garden di Prawirotaman" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <figcaption class="absolute inset-0 bg-gradient-to-t from-forest-dark/85 via-forest-dark/10 to-transparent flex flex-col justify-end p-6">
+                            <span class="text-sage text-xs font-semibold uppercase tracking-widest">Komersial / Kafe</span>
+                            <span class="mt-2 font-serif text-cream text-xl">Asri Coffee Shop, Prawirotaman</span>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimoni -->
+        <section class="py-20 md:py-28" aria-labelledby="testimoni-title">
+            <div class="max-w-7xl mx-auto px-5 sm:px-8">
+                <div class="text-center max-w-2xl mx-auto reveal">
+                    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-clay">Testimoni</p>
+                    <h2 id="testimoni-title" class="mt-4 font-serif text-4xl sm:text-5xl text-forest leading-tight text-balance">Kata mereka tentang Asri Flora</h2>
+                </div>
+                <div class="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <template x-for="t in testimonials" :key="t.name">
+                        <figure class="bg-cream-dark/50 border border-ink/5 rounded-[1.75rem] p-8 flex flex-col reveal">
+                            <div class="flex gap-1 text-clay text-sm" aria-label="5 dari 5 bintang">
+                                <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
+                            </div>
+                            <blockquote class="mt-5 font-serif text-xl text-forest leading-snug flex-1" x-text="'“' + t.quote + '”'"></blockquote>
+                            <figcaption class="mt-8 flex items-center gap-3">
+                                <span class="w-11 h-11 rounded-full bg-forest text-cream flex items-center justify-center font-semibold text-sm" x-text="t.name.split(' ').map(n => n[0]).join('').slice(0,2)"></span>
+                                <span>
+                                    <span class="block font-semibold text-sm" x-text="t.name"></span>
+                                    <span class="block text-xs text-ink/55" x-text="t.place"></span>
+                                </span>
+                            </figcaption>
+                        </figure>
+                    </template>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="py-20 md:py-28 bg-cream-dark/60 scroll-mt-16">
+            <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-12 gap-12">
+                <div class="lg:col-span-4 reveal">
+                    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-clay">FAQ</p>
+                    <h2 class="mt-4 font-serif text-4xl sm:text-5xl text-forest leading-tight text-balance">Pertanyaan yang sering diajukan</h2>
+                    <p class="mt-4 text-ink/65 leading-relaxed">Tidak menemukan jawaban? Tim kami siap membantu lewat WhatsApp.</p>
+                    <a :href="wa('Halo Asri Flora, saya punya pertanyaan.')" target="_blank" rel="noopener" class="mt-6 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-forest hover:bg-forest-light text-cream text-sm font-semibold transition-colors">
+                        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Tanya Langsung
+                    </a>
+                </div>
+                <div class="lg:col-span-7 lg:col-start-6 divide-y divide-ink/10 border-y border-ink/10 reveal">
+                    <template x-for="(f, i) in faqs" :key="f.q">
+                        <div>
+                            <h3>
+                                <button type="button" @click="openFaq = openFaq === i ? null : i" :aria-expanded="openFaq === i" :aria-controls="'faq-' + i"
+                                    class="w-full flex items-center justify-between gap-6 py-6 text-left">
+                                    <span class="font-serif text-xl text-forest" x-text="f.q"></span>
+                                    <span class="w-9 h-9 rounded-full border border-forest/20 flex items-center justify-center shrink-0 text-forest transition-transform duration-300" :class="openFaq === i && 'rotate-45 bg-forest text-cream border-forest'">
+                                        <i class="fa-solid fa-plus text-xs" aria-hidden="true"></i>
+                                    </span>
+                                </button>
+                            </h3>
+                            <div :id="'faq-' + i" x-show="openFaq === i" x-transition.opacity class="pb-6 pr-14 text-ink/70 leading-relaxed" x-text="f.a"></div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lokasi -->
+        <section id="tentang" class="py-20 md:py-28 scroll-mt-16">
+            <div class="max-w-7xl mx-auto px-5 sm:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-5 reveal">
+                        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-clay">Lokasi Showroom</p>
+                        <h2 class="mt-4 font-serif text-4xl sm:text-5xl text-forest leading-tight text-balance">Kunjungi kebun kami di Sleman</h2>
+                        <p class="mt-4 text-ink/70 leading-relaxed">
+                            Pilih tanaman langsung di kebun pamer kami, atau diskusikan rencana taman Anda bersama tim arsitek lanskap kami.
+                        </p>
+                        <dl class="mt-10 space-y-6">
+                            <div class="flex gap-4">
+                                <dt class="w-11 h-11 rounded-full bg-forest/5 text-forest flex items-center justify-center shrink-0"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span class="sr-only">Alamat</span></dt>
+                                <dd>
+                                    <span class="block font-semibold text-forest">Kantor & Nursery</span>
+                                    <span class="block text-sm text-ink/65 mt-1 leading-relaxed">Jl. Kaliurang KM 7.5, Kayen, Condongcatur, Depok, Sleman, DI Yogyakarta 55283</span>
+                                </dd>
+                            </div>
+                            <div class="flex gap-4">
+                                <dt class="w-11 h-11 rounded-full bg-forest/5 text-forest flex items-center justify-center shrink-0"><i class="fa-solid fa-clock" aria-hidden="true"></i><span class="sr-only">Jam buka</span></dt>
+                                <dd>
+                                    <span class="block font-semibold text-forest">Buka setiap hari</span>
+                                    <span class="block text-sm text-ink/65 mt-1">Senin - Minggu, 07.30 - 17.00 WIB</span>
+                                </dd>
+                            </div>
+                            <div class="flex gap-4">
+                                <dt class="w-11 h-11 rounded-full bg-forest/5 text-forest flex items-center justify-center shrink-0"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i><span class="sr-only">WhatsApp</span></dt>
+                                <dd>
+                                    <span class="block font-semibold text-forest">WhatsApp</span>
+                                    <a href="https://wa.me/6285786098459" target="_blank" rel="noopener" class="block text-sm text-ink/65 mt-1 hover:text-clay">+62 857-8609-8459</a>
+                                </dd>
+                            </div>
+                        </dl>
+                    </div>
+
+                    <div class="lg:col-span-7 reveal">
+                        <div class="rounded-[2rem] overflow-hidden border border-ink/10 bg-cream-dark h-[420px]">
+                            <iframe
+                                title="Peta lokasi Asri Flora di Sleman, Yogyakarta"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63245.97078310329!2d110.33982512167967!3d-7.750000000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a599bd35a0721%3A0x3030bfb47d31270!2sSleman%2C%20Sleman%20Regency%2C%20Special%20Region%20of%20Yogyakarta!5e0!3m2!1sen!2sid!4v1680000000000!5m2!1sen!2sid"
+                                class="w-full h-full border-0 grayscale-[30%]"
+                                allowfullscreen=""
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="px-5 sm:px-8 pb-20 md:pb-28">
+            <div class="max-w-7xl mx-auto rounded-[2rem] bg-clay text-cream relative overflow-hidden px-8 py-16 sm:px-16 sm:py-20 reveal">
+                <div class="absolute -right-24 -top-24 w-80 h-80 rounded-full border border-cream/15" aria-hidden="true"></div>
+                <div class="absolute -right-8 -top-8 w-48 h-48 rounded-full border border-cream/15" aria-hidden="true"></div>
+                <div class="relative max-w-2xl">
+                    <h2 class="font-serif text-4xl sm:text-5xl leading-tight text-balance">Siap mempercantik rumah Anda?</h2>
+                    <p class="mt-5 text-cream/85 leading-relaxed">Pesan tanaman hias pilihan atau jadwalkan survei taman gratis ke rumah Anda hari ini.</p>
+                    <a :href="wa('Halo Asri Flora Jogja, saya ingin konsultasi dan jadwalkan survei.')" target="_blank" rel="noopener"
+                        class="mt-8 inline-flex items-center gap-3 px-8 py-4 rounded-full bg-cream hover:bg-white text-forest font-semibold transition-colors">
+                        <i class="fa-brands fa-whatsapp text-xl" aria-hidden="true"></i> Hubungi via WhatsApp
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-forest-dark text-cream/60 pt-16 pb-10">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-cream/10">
+                <div class="md:col-span-5">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-full bg-cream text-forest flex items-center justify-center"><i class="fa-solid fa-seedling" aria-hidden="true"></i></span>
+                        <span class="font-serif text-2xl text-cream">Asri Flora</span>
+                    </div>
+                    <p class="mt-5 text-sm max-w-sm leading-relaxed">Pusat tanaman hias berkualitas dan jasa pembuatan taman profesional di Sleman, Bantul, dan Kota Yogyakarta.</p>
+                </div>
+                <nav class="md:col-span-3" aria-label="Navigasi footer">
+                    <h3 class="text-cream text-sm font-semibold mb-4">Navigasi</h3>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="#katalog" class="hover:text-cream transition-colors">Katalog Tanaman</a></li>
+                        <li><a href="#layanan" class="hover:text-cream transition-colors">Jasa Pembuatan Taman</a></li>
+                        <li><a href="#kalkulator" class="hover:text-cream transition-colors">Simulasi Biaya</a></li>
+                        <li><a href="#portofolio" class="hover:text-cream transition-colors">Portofolio</a></li>
+                        <li><a href="#faq" class="hover:text-cream transition-colors">FAQ</a></li>
                     </ul>
-                </div>
-                <div>
-                    <h4 class="text-white font-bold text-sm mb-4 uppercase tracking-wider">Kontak Jogja</h4>
-                    <p class="text-sm leading-relaxed mb-4">
-                        Jl. Kaliurang KM 7.5, Condongcatur, Depok, Sleman, Yogyakarta.
-                    </p>
-                    <div class="flex space-x-3 text-lg">
-                        <a href="https://instagram.com" target="_blank" class="w-9 h-9 rounded-xl bg-stone-800 flex items-center justify-center text-white hover:bg-emerald-600 transition" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://facebook.com" target="_blank" class="w-9 h-9 rounded-xl bg-stone-800 flex items-center justify-center text-white hover:bg-emerald-600 transition" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="https://wa.me/6285786098459" target="_blank" class="w-9 h-9 rounded-xl bg-stone-800 flex items-center justify-center text-white hover:bg-emerald-600 transition" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                </nav>
+                <div class="md:col-span-4">
+                    <h3 class="text-cream text-sm font-semibold mb-4">Kontak</h3>
+                    <p class="text-sm leading-relaxed">Jl. Kaliurang KM 7.5, Condongcatur, Depok, Sleman, Yogyakarta</p>
+                    <div class="mt-5 flex gap-3">
+                        <a href="https://instagram.com" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-cream/15 flex items-center justify-center text-cream hover:bg-clay hover:border-clay transition-colors" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://facebook.com" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-cream/15 flex items-center justify-center text-cream hover:bg-clay hover:border-clay transition-colors" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="https://wa.me/6285786098459" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-cream/15 flex items-center justify-center text-cream hover:bg-clay hover:border-clay transition-colors" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="border-t border-stone-800 pt-8 text-center text-xs text-stone-500">
-                &copy; 2026 Asri Flora Yogyakarta. All rights reserved.
-            </div>
+            <p class="pt-8 text-xs text-cream/40">&copy; 2026 Asri Flora Yogyakarta. Hak cipta dilindungi.</p>
         </div>
     </footer>
 
+    <!-- Floating WhatsApp -->
+    <a :href="wa('Halo Asri Flora Jogja, saya ingin bertanya.')" target="_blank" rel="noopener" x-cloak x-show="scrolled" x-transition
+        class="fixed bottom-5 right-5 z-40 w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center text-2xl shadow-lg shadow-black/20 hover:scale-105 transition-transform" aria-label="Chat WhatsApp">
+        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+    </a>
+
+    <style>
+        @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    </style>
+
+    <script>
+        function app() {
+            return {
+                phone: '6285786098459',
+                mobileMenu: false,
+                scrolled: false,
+                activeTab: 'semua',
+                calcType: 'minimalis',
+                calcArea: 25,
+                openFaq: 0,
+                navLinks: [
+                    { href: '#katalog', label: 'Tanaman Hias' },
+                    { href: '#layanan', label: 'Jasa Taman' },
+                    { href: '#kalkulator', label: 'Simulasi Biaya' },
+                    { href: '#portofolio', label: 'Portofolio' },
+                    { href: '#faq', label: 'FAQ' },
+                    { href: '#tentang', label: 'Lokasi & Kontak' },
+                ],
+                tabs: [
+                    { id: 'semua', label: 'Semua' },
+                    { id: 'indoor', label: 'Indoor' },
+                    { id: 'outdoor', label: 'Outdoor' },
+                    { id: 'kaktus', label: 'Kaktus & Sukulen' },
+                ],
+                products: [
+                    { name: 'Monstera Deliciosa', cat: 'indoor', label: 'Indoor', badge: 'Terlaris', price: 120000, img: 'images/monstera.webp', desc: 'Daun berlubang estetis untuk mempercantik interior.' },
+                    { name: 'Aglaonema Anjamani', cat: 'indoor', label: 'Indoor', price: 85000, img: 'images/aglaonema.webp', desc: 'Corak merah menyala, tahan cuaca dan mudah dirawat.' },
+                    { name: 'Sansevieria Lidah Mertua', cat: 'indoor', label: 'Indoor', price: 70000, img: 'images/sansevieria.webp', desc: 'Penyaring udara alami, cocok untuk kamar tidur.' },
+                    { name: 'Palem Kuning', cat: 'outdoor', label: 'Outdoor', price: 150000, img: 'images/palem-kuning.webp', desc: 'Peneduh pekarangan yang membuat suasana sejuk.' },
+                    { name: 'Bougenville Magenta', cat: 'outdoor', label: 'Outdoor', badge: 'Baru', price: 95000, img: 'images/bougenville.webp', desc: 'Bunga lebat warna cerah, tahan panas matahari.' },
+                    { name: 'Paket Kaktus Mini', cat: 'kaktus', label: 'Kaktus', price: 65000, img: 'images/kaktus.webp', desc: 'Set 3 pot terakota mungil untuk meja kerja.' },
+                ],
+                services: [
+                    { title: 'Taman Minimalis Modern', icon: 'fa-solid fa-tree', desc: 'Desain hemat lahan yang rapi dan bersih, ideal untuk rumah perumahan di perkotaan Jogja.', features: ['Gratis konsultasi & layout', 'Rumput sintetis / gajah mini', 'Penataan tanaman estetik'] },
+                    { title: 'Taman Tropis & Kolam Koi', icon: 'fa-solid fa-water', desc: 'Nuansa alam dengan tebing batu alam, gemericik air terjun buatan, dan kolam ikan hias.', features: ['Kolam dengan filter modern', 'Tanaman eksotis tropis', 'Garansi pengerjaan'] },
+                    { title: 'Vertical Garden & Perawatan', icon: 'fa-solid fa-spa', desc: 'Taman dinding untuk lahan terbatas, plus jasa pemangkasan dan pemupukan berkala.', features: ['Efisien untuk lahan sempit', 'Sistem irigasi otomatis', 'Perawatan rutin bulanan'] },
+                ],
+                steps: [
+                    { title: 'Konsultasi', desc: 'Ceritakan kebutuhan dan anggaran Anda lewat WhatsApp, gratis.' },
+                    { title: 'Survei Lokasi', desc: 'Tim kami datang mengukur lahan dan cek kondisi tanah.' },
+                    { title: 'Desain & Penawaran', desc: 'Anda menerima konsep visual beserta rincian biaya transparan.' },
+                    { title: 'Pengerjaan', desc: 'Taman dikerjakan tim sendiri, lengkap dengan garansi tanaman.' },
+                ],
+                concepts: [
+                    { id: 'minimalis', label: 'Minimalis', price: 250000, icon: 'fa-solid fa-tree' },
+                    { id: 'tropis', label: 'Tropis', price: 350000, icon: 'fa-solid fa-leaf' },
+                    { id: 'kolam', label: 'Taman + Kolam', price: 600000, icon: 'fa-solid fa-water' },
+                ],
+                testimonials: [
+                    { name: 'Rina Wulandari', place: 'Rumah tinggal, Ngaglik', quote: 'Halaman depan yang tadinya gersang sekarang jadi tempat favorit keluarga. Timnya rapi dan tepat waktu.' },
+                    { name: 'Dimas Prasetyo', place: 'Pemilik kafe, Prawirotaman', quote: 'Vertical garden-nya bikin kafe kami jauh lebih hidup. Pengunjung banyak yang foto di sana.' },
+                    { name: 'Sari Handayani', place: 'Pembeli tanaman, Bantul', quote: 'Monstera datang dalam kondisi sehat dan dikemas sangat aman. Pasti beli lagi di sini.' },
+                ],
+                faqs: [
+                    { q: 'Apakah survei lokasi benar-benar gratis?', a: 'Ya. Survei lokasi gratis untuk seluruh wilayah Sleman, Bantul, dan Kota Yogyakarta, tanpa kewajiban memakai jasa kami.' },
+                    { q: 'Berapa lama proses pembuatan taman?', a: 'Taman minimalis 10-30 m² umumnya selesai 3-7 hari kerja. Taman dengan kolam atau konstruksi batu alam bisa 2-4 minggu tergantung ukuran.' },
+                    { q: 'Apakah ada garansi tanaman?', a: 'Ada. Kami memberikan garansi penggantian tanaman selama 30 hari setelah serah terima, selama perawatan sesuai panduan kami.' },
+                    { q: 'Apakah bisa kirim tanaman ke luar Jogja?', a: 'Pengiriman langsung kami layani di area DIY. Untuk luar kota, tanaman tertentu bisa dikirim via ekspedisi dengan packing kayu.' },
+                    { q: 'Bagaimana cara pembayaran?', a: 'Untuk proyek taman: DP 50% setelah desain disetujui, sisanya saat serah terima. Untuk pembelian tanaman bisa transfer atau bayar di tempat.' },
+                ],
+                get filteredProducts() {
+                    return this.activeTab === 'semua' ? this.products : this.products.filter(p => p.cat === this.activeTab);
+                },
+                get currentConcept() {
+                    return this.concepts.find(c => c.id === this.calcType);
+                },
+                get total() {
+                    return this.calcArea * this.currentConcept.price;
+                },
+                rupiah(n) {
+                    return 'Rp ' + Number(n).toLocaleString('id-ID');
+                },
+                wa(text) {
+                    return 'https://wa.me/' + this.phone + '?text=' + encodeURIComponent(text);
+                },
+                init() {
+                    const onScroll = () => { this.scrolled = window.scrollY > 24; };
+                    onScroll();
+                    window.addEventListener('scroll', onScroll, { passive: true });
+
+                    this.$nextTick(() => {
+                        const observer = new IntersectionObserver((entries) => {
+                            entries.forEach((entry) => {
+                                if (entry.isIntersecting) {
+                                    entry.target.classList.add('is-visible');
+                                    observer.unobserve(entry.target);
+                                }
+                            });
+                        }, { threshold: 0.12 });
+                        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+                    });
+                },
+            };
+        }
+    </script>
 </body>
 </html>
